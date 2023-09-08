@@ -22,7 +22,6 @@ int maxim(int arr[], int n)
 }
 
 void main(){
-    /*dynamic input of array*/
     int n;
     printf("enter the length of the array:");
     scanf("%d", &n);
@@ -34,6 +33,5 @@ void main(){
         printf("enter %d th value: ", i+1);
         scanf("%d", &arr[i]);
     }
-    /*calling maxim function*/
     printf("the maximum of the array is:%d", maxim(arr, 5));
 }
