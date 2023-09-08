@@ -29,19 +29,13 @@ void main()
     {
         if(num==fib(i))
         {
-            /*we found the number*/
+         
             printf("True");
             printf("\nThe number %d is a part of fibonacci series and it is %dth in the series", num, i);
             break;
         }
         if(num<fib(i))
         {
-            /*
-            if we didn't find the number in series 
-            and we checked till a number bigger than entered number
-            there is no way the number can be seen afterword in series
-            so false
-            */
             printf("False");
             printf("\nThe number %d is not a part of fibonacci series", num);
             break;
