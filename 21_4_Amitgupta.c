@@ -5,71 +5,40 @@ SE-IT (sem 3)
 2023-24
 */
 
-#include<stdio.h>
-#include<string.h>
 
-/*stucture of a student*/
-struct student
-{
-    int rollNo;
-    char name[20];
-    float perc;
-}std[5];
+ #include <stdio.h>
+#include <string.h>
 
-void main()
-{
-    /*taking in 5 student details*/
-    for(int i=0; i<5; i++)
-    {
-        printf("enter the details of %d th student\n", i+1);
-        printf("enter the roll no.: ");
-        scanf("%d", &std[i].rollNo);
-        printf("enter the name: ");
-        scanf("%s", std[i].name);
-        printf("enter the percentage.: ");
-        scanf("%f", &std[i].perc);
-        printf("\n");
-    }
-    
-    /*sorting by percentile decsending*/
-    for(int i=0; i<5; i++)
-    {
-        //selection sort
-        float max=std[i].perc;
-        int idx=i;
-        for(int j=i; j<5; j++)
-        {
-            if(max<std[j].perc)
-            {
-                /*saving the max*/
-                max=std[j].perc;
-                idx=j;
-            }
-        }
-        /*swap*/
-        int num=std[idx].rollNo;
-        std[idx].rollNo=std[i].rollNo;
-        std[i].rollNo=num;
-        char temp[20];
-        strcpy(temp,std[idx].name);
-        strcpy(std[idx].name,std[i].name);
-        strcpy(std[i].name,temp);
-        std[idx].perc=std[i].perc;
-        std[i].perc=max;
-    }
+struct Student {
+    int roll_no;
+    char name[50];
+    float percentage;
+		};
 
-    /*printing the sorted array of structures*/
-    printf("\n\n\n\n");
-    for(int i=0; i<5; i++)
-    {
-        printf("the details of %d th student\n", i+1);
-        printf("the roll no.: ");
-        printf("%d\n", std[i].rollNo);
-        printf("the name: ");
-        printf("%s\n", std[i].name);
-        printf("enter the percentage.: ");
-        printf("%f\n", std[i].perc);
-        printf("\n");
-    }
+int comp(const void *a, const void *b) {
+    return ((struct Student *)b)->percentage - ((struct Student *)a)->percentage;
+					}
 
-}/*end of main*/
+int main() {
+    struct Student students[5];
+
+    for (int i = 0; i < 5; i++) {
+        printf("Enter details for student %d:\n", i + 1);
+        printf("Roll Number: ");
+        scanf("%d", &students[i].roll_no);
+        printf("Name: ");
+        scanf("%s", students[i].name);
+        printf("Percentage: ");
+        scanf("%f", &students[i].percentage);
+  				  }
+
+    qsort(students, 5, sizeof(struct Student), comp);
+
+    printf("\nStudent Records (Sorted by Percentage in Descending Order):\n");
+    printf("Roll No\tName\tPercentage\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d\t%s\t%.2f\n", students[i].roll_no, students[i].name, students[i].percentage);
+   	 }
+
+    return 0;
+}
