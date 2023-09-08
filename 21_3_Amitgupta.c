@@ -30,21 +30,20 @@ void main(){
         printf("\n");
     }
 
-    /*sorting by roll no*/
     for(int i=0; i<5; i++)
     {
-        //selection sort
+    
         int min=std[i].rollNo, idx=i;
         for(int j=i; j<5; j++)
         {
             if(min>std[j].rollNo)
             {
-                /*saving the min*/
+               
                 min=std[j].rollNo;
                 idx=j;
             }
         }
-        /*swap*/
+       
         std[idx].rollNo=std[i].rollNo;
         std[i].rollNo=min;
         char temp[20];
@@ -56,7 +55,7 @@ void main(){
         std[i].perc=num;
     }
 
-    /*printing the sorted array of structures*/
+    /*printing the array of structures*/
     printf("\n\n\n\n");
     for(int i=0; i<5; i++)
     {
